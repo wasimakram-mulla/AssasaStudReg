@@ -1,0 +1,22 @@
+.card-block{
+    height: 200px;
+    overflow: auto;
+}
+
+.card-header{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.col-md-6, .col-sm-12, .col-xs-12{
+    margin-bottom: 10px;
+}
+
+.btn{
+    margin:0px 5px;
+}
+
+.btn-danger{
+    margin-right:0px;
+}

@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    <div class="col-md-8 col-sm-10 col-xs-10">
+      <h3 class="text-primary">Explore Course</h3>
+      <hr>
+      <h5 class="text-primary" *ngIf="spinnerFlag"><i class="fa fa-spinner fa-pulse fa-fw"></i>Please wait...</h5>
+      <h5 class="text-primary" *ngIf="course"><em><u>Title</u>:</em> {{course.title}}</h5><br/>
+      <div class="input-group">
+        <input placeholder="Search by Name" [(ngModel)]="searchField" class="form-control"/>
+        <span class="input-group-btn">
+          <button class="btn btn-primary btn-search" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+        
+      </div>
+      
+      <br>
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+          <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Reg. Date (MM/dd/yyyy)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" class="text-danger" *ngIf="user.length<=0"><h5><i class="fa fa-exclamation-triangle"></i> Currently there are no students in the list.</h5></td>
+          </tr>
+          <tr *ngFor="let user of user | searchFilter: 'name' : searchField; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.contact}}</td>
+            <td>{{user.registeredDate | toDate: 'MM/dd/yyyy'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-2 col-sm-1 col-xs-1"></div>
+</div>

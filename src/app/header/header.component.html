@@ -1,0 +1,32 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- <a class="navbar-brand" href="#">Assasa Technologies</a> -->
+  <a class="navbar-brand" href="#"><img src="http://assasatech.com/wp-content/uploads/2015/06/green51.png" height="50"/></a>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" *ngIf="afAuth.authState | async; let user">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" href="javascript:void(0)">
+            <i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/newcourse" routerLinkActive="active" href="javascript:void(0)">
+            <i class="fa fa-plus-square" aria-hidden="true"></i> New Course
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/allstuds" routerLinkActive="active" href="javascript:void(0)">
+            <i class="fa fa-globe" aria-hidden="true"></i> All students
+          </a>
+        </li>
+      </ul>
+      <div class="form-inline mt-2 mt-md-0">
+        <span class="navbar-text">
+            Welcome <em>{{ user.displayName }}</em>
+            <a href="javascript:void(0)" class="text-info" (click)="logout();">Logout</a>
+        </span>
+      </div>
+    </div>
+</nav>

@@ -1,0 +1,30 @@
+
+<div class="row">
+<div class="col-md-3 col-sm-1 col-xs-1"></div>
+<div class="col-md-6 col-sm-10 col-xs-10">
+  <h3 class="text-primary">Register</h3>
+  <hr>
+  <h5 class="text-primary" *ngIf="spinnerFlag"><i class="fa fa-spinner fa-pulse fa-fw"></i>Please wait...</h5>
+
+  <form *ngIf="!spinnerFlag" #formCtrl="ngForm">
+    <h6 class="text-success" *ngIf="successFlag"><i class="fa fa-check"></i>You have successfully registered.</h6>
+    <h6 class="text-danger" *ngIf="ErrorFlag"><i class="fa fa-times"></i> Problem while registeration, Please try again later.</h6>
+    <h5 class="text-primary"><em><u>Title</u>:</em> {{course.title}}</h5>
+    <h6 class="text-warning" [innerHtml]="course.description" *ngIf="seeDesc"></h6>
+    <h6 class="text-primary" *ngIf="course.price!=0"><em><u>Offer</u>:</em> Learn any subject for Rs. <strong>{{course.price}}/-</strong> only</h6>
+    <h6 class="text-danger" *ngIf="alreadyReg">You have already registered for this course.</h6>
+    <h6 class="btn-link"><a href="javascript:void(0);" (click)="toggleDesc()">{{descText}} description</a></h6>
+    <label for="name" class="text-default"><em>Full Name<sup>*</sup></em></label>
+    <input type="text" class="form-control" name="displayName" placeholder="Enter Name" [(ngModel)]="displayName" required [disabled]="disableField || alreadyReg"/>
+    <br/>
+    <label for="name" class="text-default"><em>Contact<sup>*</sup></em></label>
+    <input type="text" class="form-control" name="contact" placeholder="Enter Contact details" [(ngModel)]="contactno" [disabled]="disableField || alreadyReg" required/>
+    <br/>
+    <label for="name" class="text-default"><em>Email<sup>*</sup></em></label>
+    <input type="text" class="form-control" name="email" placeholder="Enter Email" [(ngModel)]="email" [disabled]="disableField || alreadyReg" required/>
+    <br/>
+    <button class="btn-primary btn" [disabled]="!formCtrl.form.valid || disableField || alreadyReg" (click)="register()">Register</button>
+  </form>
+</div>
+<div class="col-md-3 col-sm-1 col-xs-1"></div>
+</div>

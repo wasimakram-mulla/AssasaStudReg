@@ -1,0 +1,30 @@
+<h3 class="text-primary">Dashboard</h3>
+<hr>
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 text-center" *ngIf="spinnerFlag">
+      <h5 class="text-primary"><i class="fa fa-spinner fa-pulse fa-fw"></i>Please wait...</h5>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="isCourseAvail">
+      <h5 class="text-danger"><i class="fa fa-exclamation-triangle"></i> Currently there are no courses present.</h5>
+  </div>
+  <div class="col-md-6 col-sm-12 col-xs-12" *ngFor="let course of courses | async">
+      <div class="card" *ngIf="course.data.status=='active'">
+          <div class="card-header">
+              {{course.data.title}}
+          </div>
+          <div class="card-block">
+            <p class="card-text" [innerHtml]="course.data.description"></p>
+          </div>
+          <div class="card-footer text-muted">
+            <a href="javascript:void(0)" class="btn btn-primary" (click)="goToRegister(course.data)">Register <i class="fa fa-arrow-right"></i></a>
+            <a href="javascript:void(0)" class="btn btn-danger float-right" *ngIf="isAdmin" (click)="expireCourse(course.id)">
+                Expire <i class="fa fa-trash-o"></i>
+            </a>
+            <a href="javascript:void(0)" class="btn btn-success float-right" (click)="goToExploreCourse(course.data)"  *ngIf="isAdmin">
+                Explore <i class="fa fa-expand"></i>
+            </a>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-3 col-sm-1 col-xs-1"></div>
+  <div class="col-md-6 col-sm-10 col-xs-10">
+    <h3 class="text-primary">Add New Course</h3>
+    <hr>
+    <form>
+      <h6 class="text-success" *ngIf="successFlag"><i class="fa fa-check"></i> Course added successfully.</h6>
+      <h6 class="text-danger" *ngIf="errorFlag"><i class="fa fa-times"></i> Problem while adding the course.</h6>
+
+      <label for="name" class="text-default"><em>Course title<sup>*</sup></em></label>
+      <input type="text" class="form-control" placeholder="Course title" name="courseTitle" [(ngModel)]="courseTitle" [disabled]="disableField"/>
+      <br/>
+      <label for="name" class="text-default"><em>Offer price<sup>*</sup></em></label>
+      <input type="text" class="form-control" placeholder="Offer price" name="offerPrice" [(ngModel)]="offerPrice" [disabled]="disableField"/>
+      <br/>
+      <label for="name" class="text-default"><em>Course description<sup>*</sup></em></label>
+      <textarea class="form-control" placeholder="Course description" rows="15" name="courseDesc" [(ngModel)]="courseDesc" [disabled]="disableField"></textarea>
+      <br/>
+      <button type="button" class="btn btn-primary" (click)="addNewCourse()" [disabled]="!courseTitle || !courseDesc || !offerPrice || disableField">
+        <i class="fa fa-plus"></i> Add New Course
+      </button>
+    </form>
+  </div>
+  <div class="col-md-3 col-sm-1 col-xs-1"></div>
+</div>
